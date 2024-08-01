@@ -8,7 +8,7 @@ if [ "$1" = "all" ]; then
     mkdir build
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release
-    make -j
+    make -j`nproc`
 
     cd ../../g2o
 
@@ -17,12 +17,14 @@ if [ "$1" = "all" ]; then
     mkdir build
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release
-    make -j
+    make -j`nproc`
 
     cd ../../../
 fi
 
+rm -r build/
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j3
+# cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Debug
+make -j5

@@ -2321,7 +2321,8 @@ bool Tracking::TrackReferenceKeyFrame()
     }
 
     mCurrentFrame.mvpMapPoints = vpMapPointMatches;
-    mCurrentFrame.SetPose(fusion(cv::Mat::eye(4, 4, CV_32F))*mLastFrame.mTcw);
+    // mCurrentFrame.SetPose(fusion(cv::Mat::eye(4, 4, CV_32F))*mLastFrame.mTcw);
+    mCurrentFrame.SetPose(mLastFrame.mTcw);
 
     //mCurrentFrame.PrintPointDistribution();
 
@@ -2449,7 +2450,8 @@ bool Tracking::TrackWithMotionModel()
     }
     else
     {
-        mCurrentFrame.SetPose(fusion(mVelocity)*mLastFrame.mTcw);
+        // mCurrentFrame.SetPose(fusion(mVelocity)*mLastFrame.mTcw);
+        mCurrentFrame.SetPose(mVelocity*mLastFrame.mTcw);
     }
 
 

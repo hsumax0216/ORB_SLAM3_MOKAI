@@ -48,7 +48,7 @@ public:
 
     typedef pair<set<KeyFrame*>,int> ConsistentGroup;    
     typedef map<KeyFrame*,g2o::Sim3,std::less<KeyFrame*>,
-        Eigen::aligned_allocator<std::pair<const KeyFrame*, g2o::Sim3> > > KeyFrameAndPose;
+        Eigen::aligned_allocator<std::pair<KeyFrame* const, g2o::Sim3> > > KeyFrameAndPose;
 
 public:
 
@@ -193,8 +193,9 @@ protected:
     // Fix scale in the stereo/RGB-D case
     bool mbFixScale;
 
-
-    bool mnFullBAIdx;
+    // BUG: https://github.com/UZ-SLAMLab/ORB_SLAM3/issues/550
+    // bool mnFullBAIdx;
+    unsigned int mnFullBAIdx;
 
 
 

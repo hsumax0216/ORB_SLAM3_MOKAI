@@ -25,6 +25,8 @@
 
 #include <set>
 #include <pangolin/pangolin.h>
+#include <opencv2/core/types_c.h>
+#include <opencv2/imgproc/types_c.h>
 #include <mutex>
 
 #include <boost/serialization/base_object.hpp>

@@ -286,6 +286,9 @@ void LoadImages(const string &strPathLeft, const string &strPathRight, const str
 {
     ifstream fTimes;
     fTimes.open(strPathTimes.c_str());
+    // cout << endl << "strPathTimes.c_str(): " << strPathTimes.c_str() << endl;
+    // cout << "strPathLeft.c_str(): " << strPathLeft.c_str() << endl;
+    // cout << "strPathRight.c_str(): " << strPathRight.c_str() << endl;
     vTimeStamps.reserve(5000);
     vstrImageLeft.reserve(5000);
     vstrImageRight.reserve(5000);
@@ -310,6 +313,9 @@ void LoadImages(const string &strPathLeft, const string &strPathRight, const str
 void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::Point3f> &vAcc, vector<cv::Point3f> &vGyro)
 {
     ifstream fImu;
+    // string a;
+    // cout << "strImuPath: " << strImuPath << endl;
+    // cin >> a;
     fImu.open(strImuPath.c_str());
     vTimeStamps.reserve(5000);
     vAcc.reserve(5000);
@@ -321,7 +327,8 @@ void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::P
         getline(fImu,s);
         if (s[0] == '#')
             continue;
-
+        // cout << "s: " << s << endl;
+        // cin >> a;
         if(!s.empty())
         {
             string item;
@@ -330,6 +337,7 @@ void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::P
             int count = 0;
             while ((pos = s.find(',')) != string::npos) {
                 item = s.substr(0, pos);
+                // cout << "item: " << item << endl;
                 data[count++] = stod(item);
                 s.erase(0, pos + 1);
             }
